@@ -355,7 +355,6 @@ body{font-family:'Inter','Segoe UI',Arial,sans-serif;background:var(--bg-0);colo
 // ============ ДАННЫЕ ============
 const RARITY_NAMES={common:'Обычный',uncommon:'Необычный',rare:'Редкий',epic:'Эпический',legendary:'Легендарный',mythic:'Мифический',ancient:'Древний'};
 
-// Скины — цены снижены, чтобы соответствовать новым ценам кейсов
 const SKINS_POOL=[
   {id:'s1',name:'AK-47 | Olive Polycam',img:'🔫',rarity:'common',price:5},
   {id:'s2',name:'Glock-18 | Шторм',img:'🔫',rarity:'common',price:7},
@@ -426,98 +425,98 @@ const SECTIONS=[
   {id:'knife',name:'🗡️ НОЖЕВЫЕ КЕЙСЫ'}
 ];
 
-function getSectionByPrice(p){if(p<50)return 'starter';if(p<200)return 'low';if(p<1000)return 'middle';if(p<5000)return 'high';return 'elite'}
+function getSectionByPrice(p){if(p<25)return 'starter';if(p<120)return 'low';if(p<600)return 'middle';if(p<3000)return 'high';return 'elite'}
 
-// Цены кейсов ПЕРЕСЧИТАНЫ: теперь адекватны содержимому
+// ЦЕНЫ КЕЙСОВ СНИЖЕНЫ ЕЩЁ СИЛЬНЕЕ
 const CASES=[
-  // Операция — 25-80 ₽
-  {id:'op1',name:'ОПЕРАЦИЯ РИФ',emoji:'🌊',price:35,count:34,section:'operation',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
-  {id:'op2',name:'ОПЕРАЦИЯ БРАВО',emoji:'🎯',price:35,count:34,section:'operation',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
-  {id:'op3',name:'ХОЛОДНАЯ ВОЙНА',emoji:'❄️',price:65,count:36,section:'operation',chances:{common:48,uncommon:30,rare:16,epic:5,legendary:1}},
-  {id:'op4',name:'РАСПАДОЧНЫЙ СЕТИ',emoji:'📡',price:75,count:37,section:'operation',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'op5',name:'БРАВО-БРАВО',emoji:'🧨',price:85,count:37,section:'operation',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'op6',name:'СЛОМАННЫЙ КЛЮЧ',emoji:'🔑',price:35,count:34,section:'operation',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
-  {id:'op7',name:'КЕЙС «АКВАМАРИН»',emoji:'🐬',price:35,count:34,section:'operation',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
-  {id:'op8',name:'КЕЙС «ГИДРА»',emoji:'🐍',price:40,count:34,section:'operation',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
-  {id:'op9',name:'ПЛАМЯ И ВОЗМЕЗДИЕ',emoji:'🔥',price:45,count:34,section:'operation',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
-  {id:'op10',name:'СНОВА В БОЮ',emoji:'⚔️',price:50,count:34,section:'operation',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
-  // Valve CS3 — 60-200 ₽
-  {id:'val1',name:'ГАЛСТУК ЭЛИТ',emoji:'🎩',price:70,count:32,section:'valve',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'val2',name:'КЕЙС «ВОССТАНИЕ»',emoji:'✊',price:95,count:36,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'val3',name:'«ЗВЕРИНЫЙ КС3»',emoji:'🦁',price:130,count:37,section:'valve',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
-  {id:'val4',name:'КЕЙС «РАСТЕНИЕ»',emoji:'🌿',price:70,count:36,section:'valve',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'val5',name:'ОГНЕННЫЙ ЗМЕЙ',emoji:'🐉',price:180,count:38,section:'valve',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'val6',name:'КЕЙС «ВОЛКИ»',emoji:'🐺',price:100,count:35,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'val7',name:'«ВЫСШЕЕ ОБЩЕСТВО»',emoji:'🎭',price:130,count:37,section:'valve',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
-  {id:'val8',name:'«ХРОМ»',emoji:'⚙️',price:160,count:37,section:'valve',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'val9',name:'«ОГНЕННАЯ БУРЯ»',emoji:'🌪️',price:120,count:36,section:'valve',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'val10',name:'«ЗАБЫТЫЙ ВОИН»',emoji:'🗿',price:95,count:35,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  // Перчатки и ножи — 40-150 ₽
-  {id:'gl1',name:'ГРАДИЕНТНЫЙ КЕЙС',emoji:'🌈',price:40,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'gl2',name:'КЕЙС «ИЗУМРУДНЫЙ»',emoji:'💚',price:60,count:36,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'gl3',name:'ПЕРЧАТКИ И ВОЗМЕЗДИЕ',emoji:'🧤',price:110,count:61,section:'gloves',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'gl4',name:'ОПЕРАЦИЯ «ЗАБЫТЫЕ ВОЙНЫ»',emoji:'🎖',price:150,count:41,section:'gloves',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'gl5',name:'КЕЙС «РАДИАН»',emoji:'☢️',price:80,count:36,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'gl6',name:'ОРУЖЕЙНЫЙ КЕЙС #1',emoji:'🔫',price:60,count:34,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'gl7',name:'КЕЙС «ЗВЕЗДНЫЙ УЛОВ»',emoji:'🌟',price:110,count:34,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'gl8',name:'КЕЙС ESPORTS 2013',emoji:'🏆',price:120,count:34,section:'gloves',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
-  {id:'gl9',name:'КЕЙС «РАЗЛОМ»',emoji:'💥',price:135,count:34,section:'gloves',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
-  {id:'gl10',name:'КЕЙС «СЛЕДОПЫТ»',emoji:'🔎',price:110,count:34,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'gl11',name:'КЕЙС «ЦУНАМИ»',emoji:'🌊',price:70,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'gl12',name:'СТАЛЬНОЙ КУЛАК',emoji:'👊',price:60,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  // Сувенирные — 40-70 ₽
-  {id:'sv1',name:'ОПЕРАЦИЯ «ДИКОЕ ПЛАМЯ»',emoji:'🔥',price:60,count:34,section:'souvenir',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'sv2',name:'ОПЕРАЦИЯ «ПОТОП»',emoji:'🌊',price:60,count:34,section:'souvenir',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'sv3',name:'ХРОМОВЫЙ КЕЙС #2',emoji:'⚙️',price:45,count:34,section:'souvenir',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
-  {id:'sv4',name:'ХРОМОВЫЙ КЕЙС #3',emoji:'⚙️',price:45,count:34,section:'souvenir',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
-  {id:'sv5',name:'ОПЕРАЦИЯ «АКВАМАРИН»',emoji:'💧',price:40,count:34,section:'souvenir',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
-  // Скины по оружию — 15-120 ₽
-  {id:'w1',name:'STATTRAK™ ELITE',emoji:'⭐',price:120,count:36,section:'weapon',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'w2',name:'GLOCK-18 ВСЕМ',emoji:'🔫',price:15,count:79,section:'weapon',chances:{common:60,uncommon:28,rare:10,epic:2,legendary:0.5}},
-  {id:'w3',name:'DESERT EAGLE ВСЕМ',emoji:'🔫',price:18,count:62,section:'weapon',chances:{common:58,uncommon:30,rare:10,epic:2,legendary:0.5}},
-  {id:'w4',name:'USP-S ВСЕМ',emoji:'🔫',price:18,count:66,section:'weapon',chances:{common:58,uncommon:30,rare:10,epic:2,legendary:0.5}},
-  {id:'w5',name:'M4A4 ВСЕМ',emoji:'🔫',price:90,count:59,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'w6',name:'M4A1-S ВСЕМ',emoji:'🔫',price:65,count:64,section:'weapon',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
-  {id:'w7',name:'AK-47 ВСЕМ',emoji:'🔫',price:80,count:72,section:'weapon',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
-  {id:'w8',name:'AWP ВСЕМ',emoji:'🎯',price:90,count:59,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  {id:'w9',name:'ЭКО-РАУНД',emoji:'💰',price:12,count:47,section:'weapon',chances:{common:65,uncommon:25,rare:8,epic:1.5,legendary:0.5}},
-  {id:'w10',name:'FARM-ДЕВАЙСЫ',emoji:'🚜',price:15,count:51,section:'weapon',chances:{common:62,uncommon:26,rare:9,epic:2,legendary:0.5}},
-  {id:'w11',name:'FULL BUY-РАУНД',emoji:'💸',price:50,count:41,section:'weapon',chances:{common:50,uncommon:32,rare:14,epic:3,legendary:1}},
-  {id:'w12',name:'ПЕРЧАТОЧНЫЙ БУМ',emoji:'🧤',price:90,count:56,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
-  // Ножевые — 4000-9000 ₽
-  {id:'kn1',name:'ШТЫК-НОЖ',emoji:'🗡️',price:4500,count:18,knifeCase:true,section:'knife',chances:{legendary:40,mythic:35,ancient:25}},
-  {id:'kn2',name:'НОЖ-БАБОЧКА',emoji:'🦋',price:9000,count:18,knifeCase:true,section:'knife',chances:{legendary:35,mythic:40,ancient:25}},
-  {id:'kn3',name:'КОГОТЬ',emoji:'🗡️',price:6500,count:18,knifeCase:true,section:'knife',chances:{legendary:38,mythic:37,ancient:25}},
-  {id:'kn4',name:'ШТЫК-НОЖ M9',emoji:'🗡️',price:7500,count:18,knifeCase:true,section:'knife',chances:{legendary:38,mythic:37,ancient:25}},
+  // Операция — 12-45 ₽
+  {id:'op1',name:'ОПЕРАЦИЯ РИФ',emoji:'🌊',price:12,count:34,section:'operation',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
+  {id:'op2',name:'ОПЕРАЦИЯ БРАВО',emoji:'🎯',price:12,count:34,section:'operation',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
+  {id:'op3',name:'ХОЛОДНАЯ ВОЙНА',emoji:'❄️',price:25,count:36,section:'operation',chances:{common:48,uncommon:30,rare:16,epic:5,legendary:1}},
+  {id:'op4',name:'РАСПАДОЧНЫЙ СЕТИ',emoji:'📡',price:30,count:37,section:'operation',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'op5',name:'БРАВО-БРАВО',emoji:'🧨',price:35,count:37,section:'operation',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'op6',name:'СЛОМАННЫЙ КЛЮЧ',emoji:'🔑',price:12,count:34,section:'operation',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
+  {id:'op7',name:'КЕЙС «АКВАМАРИН»',emoji:'🐬',price:12,count:34,section:'operation',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
+  {id:'op8',name:'КЕЙС «ГИДРА»',emoji:'🐍',price:15,count:34,section:'operation',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
+  {id:'op9',name:'ПЛАМЯ И ВОЗМЕЗДИЕ',emoji:'🔥',price:18,count:34,section:'operation',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
+  {id:'op10',name:'СНОВА В БОЮ',emoji:'⚔️',price:20,count:34,section:'operation',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
+  // Valve CS3 — 25-80 ₽
+  {id:'val1',name:'ГАЛСТУК ЭЛИТ',emoji:'🎩',price:28,count:32,section:'valve',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'val2',name:'КЕЙС «ВОССТАНИЕ»',emoji:'✊',price:40,count:36,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'val3',name:'«ЗВЕРИНЫЙ КС3»',emoji:'🦁',price:55,count:37,section:'valve',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
+  {id:'val4',name:'КЕЙС «РАСТЕНИЕ»',emoji:'🌿',price:28,count:36,section:'valve',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'val5',name:'ОГНЕННЫЙ ЗМЕЙ',emoji:'🐉',price:75,count:38,section:'valve',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'val6',name:'КЕЙС «ВОЛКИ»',emoji:'🐺',price:42,count:35,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'val7',name:'«ВЫСШЕЕ ОБЩЕСТВО»',emoji:'🎭',price:55,count:37,section:'valve',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
+  {id:'val8',name:'«ХРОМ»',emoji:'⚙️',price:68,count:37,section:'valve',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'val9',name:'«ОГНЕННАЯ БУРЯ»',emoji:'🌪️',price:50,count:36,section:'valve',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'val10',name:'«ЗАБЫТЫЙ ВОИН»',emoji:'🗿',price:40,count:35,section:'valve',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  // Перчатки и ножи — 15-60 ₽
+  {id:'gl1',name:'ГРАДИЕНТНЫЙ КЕЙС',emoji:'🌈',price:15,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'gl2',name:'КЕЙС «ИЗУМРУДНЫЙ»',emoji:'💚',price:22,count:36,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'gl3',name:'ПЕРЧАТКИ И ВОЗМЕЗДИЕ',emoji:'🧤',price:45,count:61,section:'gloves',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'gl4',name:'ОПЕРАЦИЯ «ЗАБЫТЫЕ ВОЙНЫ»',emoji:'🎖',price:60,count:41,section:'gloves',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'gl5',name:'КЕЙС «РАДИАН»',emoji:'☢️',price:32,count:36,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'gl6',name:'ОРУЖЕЙНЫЙ КЕЙС #1',emoji:'🔫',price:22,count:34,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'gl7',name:'КЕЙС «ЗВЕЗДНЫЙ УЛОВ»',emoji:'🌟',price:45,count:34,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'gl8',name:'КЕЙС ESPORTS 2013',emoji:'🏆',price:50,count:34,section:'gloves',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
+  {id:'gl9',name:'КЕЙС «РАЗЛОМ»',emoji:'💥',price:55,count:34,section:'gloves',chances:{common:38,uncommon:32,rare:21,epic:7,legendary:2}},
+  {id:'gl10',name:'КЕЙС «СЛЕДОПЫТ»',emoji:'🔎',price:45,count:34,section:'gloves',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'gl11',name:'КЕЙС «ЦУНАМИ»',emoji:'🌊',price:28,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'gl12',name:'СТАЛЬНОЙ КУЛАК',emoji:'👊',price:22,count:35,section:'gloves',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  // Сувенирные — 15-28 ₽
+  {id:'sv1',name:'ОПЕРАЦИЯ «ДИКОЕ ПЛАМЯ»',emoji:'🔥',price:22,count:34,section:'souvenir',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'sv2',name:'ОПЕРАЦИЯ «ПОТОП»',emoji:'🌊',price:22,count:34,section:'souvenir',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'sv3',name:'ХРОМОВЫЙ КЕЙС #2',emoji:'⚙️',price:15,count:34,section:'souvenir',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
+  {id:'sv4',name:'ХРОМОВЫЙ КЕЙС #3',emoji:'⚙️',price:15,count:34,section:'souvenir',chances:{common:48,uncommon:32,rare:15,epic:4,legendary:1}},
+  {id:'sv5',name:'ОПЕРАЦИЯ «АКВАМАРИН»',emoji:'💧',price:12,count:34,section:'souvenir',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
+  // Скины по оружию — 6-60 ₽
+  {id:'w1',name:'STATTRAK™ ELITE',emoji:'⭐',price:60,count:36,section:'weapon',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'w2',name:'GLOCK-18 ВСЕМ',emoji:'🔫',price:6,count:79,section:'weapon',chances:{common:60,uncommon:28,rare:10,epic:2,legendary:0.5}},
+  {id:'w3',name:'DESERT EAGLE ВСЕМ',emoji:'🔫',price:8,count:62,section:'weapon',chances:{common:58,uncommon:30,rare:10,epic:2,legendary:0.5}},
+  {id:'w4',name:'USP-S ВСЕМ',emoji:'🔫',price:8,count:66,section:'weapon',chances:{common:58,uncommon:30,rare:10,epic:2,legendary:0.5}},
+  {id:'w5',name:'M4A4 ВСЕМ',emoji:'🔫',price:45,count:59,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'w6',name:'M4A1-S ВСЕМ',emoji:'🔫',price:32,count:64,section:'weapon',chances:{common:45,uncommon:32,rare:17,epic:5,legendary:1}},
+  {id:'w7',name:'AK-47 ВСЕМ',emoji:'🔫',price:40,count:72,section:'weapon',chances:{common:42,uncommon:32,rare:19,epic:6,legendary:1}},
+  {id:'w8',name:'AWP ВСЕМ',emoji:'🎯',price:45,count:59,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  {id:'w9',name:'ЭКО-РАУНД',emoji:'💰',price:5,count:47,section:'weapon',chances:{common:65,uncommon:25,rare:8,epic:1.5,legendary:0.5}},
+  {id:'w10',name:'FARM-ДЕВАЙСЫ',emoji:'🚜',price:6,count:51,section:'weapon',chances:{common:62,uncommon:26,rare:9,epic:2,legendary:0.5}},
+  {id:'w11',name:'FULL BUY-РАУНД',emoji:'💸',price:22,count:41,section:'weapon',chances:{common:50,uncommon:32,rare:14,epic:3,legendary:1}},
+  {id:'w12',name:'ПЕРЧАТОЧНЫЙ БУМ',emoji:'🧤',price:45,count:56,section:'weapon',chances:{common:40,uncommon:32,rare:20,epic:7,legendary:1}},
+  // Ножевые — 2500-5000 ₽
+  {id:'kn1',name:'ШТЫК-НОЖ',emoji:'🗡️',price:2500,count:18,knifeCase:true,section:'knife',chances:{legendary:40,mythic:35,ancient:25}},
+  {id:'kn2',name:'НОЖ-БАБОЧКА',emoji:'🦋',price:5000,count:18,knifeCase:true,section:'knife',chances:{legendary:35,mythic:40,ancient:25}},
+  {id:'kn3',name:'КОГОТЬ',emoji:'🗡️',price:3500,count:18,knifeCase:true,section:'knife',chances:{legendary:38,mythic:37,ancient:25}},
+  {id:'kn4',name:'ШТЫК-НОЖ M9',emoji:'🗡️',price:4000,count:18,knifeCase:true,section:'knife',chances:{legendary:38,mythic:37,ancient:25}},
   // Фирменные/универсальные
-  {id:'u1',name:'ГРАНД СЛЭМ',emoji:'🏆',price:2500,count:37,section:'elite',chances:{rare:20,epic:32,legendary:32,mythic:13,ancient:3}},
-  {id:'u2',name:'ГЕЙША',emoji:'🌸',price:18,count:41,section:'low',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
-  {id:'u3',name:'ХАЛК',emoji:'💚',price:200,count:42,section:'middle',chances:{uncommon:28,rare:32,epic:26,legendary:11,mythic:3}},
-  {id:'u4',name:'ЧЕЛОВЕК-ПАУК',emoji:'🕷️',price:500,count:39,section:'middle',chances:{uncommon:22,rare:33,epic:30,legendary:12,mythic:3}},
-  {id:'u5',name:'КАРАТЕЛЬ',emoji:'💀',price:75,count:45,section:'low',chances:{common:42,uncommon:32,rare:18,epic:6,legendary:2}},
-  {id:'u6',name:'СКОРПИОН',emoji:'🦂',price:22,count:42,section:'starter',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
-  {id:'u7',name:'ДЖУНГЛИ',emoji:'🌴',price:12,count:41,section:'starter',chances:{common:60,uncommon:25,rare:11,epic:3,legendary:1}},
-  {id:'u8',name:'ЛОНЕСТАР',emoji:'🤠',price:9,count:34,section:'starter',chances:{common:65,uncommon:24,rare:9,epic:2,legendary:0.5}},
-  {id:'u9',name:'ВАЛКИРА',emoji:'⚔️',price:25,count:32,section:'starter',chances:{common:52,uncommon:30,rare:14,epic:3,legendary:1}},
-  {id:'u10',name:'МАНТИКОР',emoji:'🦂',price:60,count:31,section:'low',chances:{common:42,uncommon:32,rare:18,epic:6,legendary:2}},
-  {id:'u11',name:'КОЛЬХИДА',emoji:'🐍',price:100,count:35,section:'low',chances:{common:36,uncommon:32,rare:22,epic:8,legendary:2}},
-  {id:'u12',name:'ВАРДОГС',emoji:'🐺',price:250,count:36,section:'middle',chances:{common:25,uncommon:30,rare:28,epic:13,legendary:3,mythic:1}},
-  {id:'u13',name:'ЭЙНШТЕЙН',emoji:'🧪',price:18,count:42,section:'starter',chances:{common:58,uncommon:26,rare:11,epic:4,legendary:1}},
-  {id:'u14',name:'МЕНДЕЛЕЕВ',emoji:'⚗️',price:50,count:36,section:'low',chances:{common:48,uncommon:30,rare:16,epic:5,legendary:1}},
-  {id:'u15',name:'ДАРВИН',emoji:'🧬',price:120,count:41,section:'low',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
-  {id:'u16',name:'ГАУСС',emoji:'⚡',price:500,count:39,section:'middle',chances:{uncommon:25,rare:32,epic:28,legendary:12,mythic:3}},
-  {id:'u17',name:'КОПЕРНИК',emoji:'🌌',price:1500,count:37,section:'high',chances:{rare:20,epic:32,legendary:30,mythic:14,ancient:4}},
-  {id:'u18',name:'ЧЁРНЫЙ АЛМАЗ',emoji:'🖤',price:5000,count:34,section:'elite',chances:{epic:25,legendary:38,mythic:28,ancient:9}},
-  {id:'u19',name:'РОКФЕЛЛЕР',emoji:'💵',price:7500,count:32,section:'elite',chances:{epic:20,legendary:35,mythic:33,ancient:12}},
-  {id:'u20',name:'БИТКОИН',emoji:'🪙',price:12000,count:36,section:'elite',chances:{legendary:25,mythic:45,ancient:30}},
-  {id:'u21',name:'КАМУФЛЯЖНЫЙ',emoji:'🪖',price:9,count:43,section:'starter',chances:{common:65,uncommon:24,rare:9,epic:2,legendary:0.5}},
-  {id:'u22',name:'ИНЬ И ЯНЬ',emoji:'☯️',price:85,count:35,section:'low',chances:{common:38,uncommon:32,rare:21,epic:8,legendary:1}},
-  {id:'u23',name:'007',emoji:'🕴️',price:6,count:76,section:'starter',chances:{common:72,uncommon:20,rare:6,epic:1.7,legendary:0.3}},
-  {id:'u24',name:'МАГИЯ',emoji:'🔮',price:20,count:39,section:'starter',chances:{common:56,uncommon:28,rare:12,epic:3,legendary:1}},
-  {id:'u25',name:'ANGRY РЭД',emoji:'😡',price:12,count:40,section:'starter',chances:{common:60,uncommon:26,rare:10,epic:3,legendary:1}},
-  {id:'u26',name:'МЕССИ',emoji:'🐐',price:40,count:46,section:'low',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
-  {id:'u27',name:'РОНАЛДУ',emoji:'👑',price:110,count:45,section:'low',chances:{common:36,uncommon:32,rare:22,epic:8,legendary:2}},
-  {id:'u28',name:'ЯМАЛЬ',emoji:'🌟',price:1000,count:39,section:'high',chances:{rare:22,epic:34,legendary:30,mythic:12,ancient:2}}
+  {id:'u1',name:'ГРАНД СЛЭМ',emoji:'🏆',price:1500,count:37,section:'elite',chances:{rare:20,epic:32,legendary:32,mythic:13,ancient:3}},
+  {id:'u2',name:'ГЕЙША',emoji:'🌸',price:8,count:41,section:'low',chances:{common:55,uncommon:28,rare:12,epic:4,legendary:1}},
+  {id:'u3',name:'ХАЛК',emoji:'💚',price:120,count:42,section:'middle',chances:{uncommon:28,rare:32,epic:26,legendary:11,mythic:3}},
+  {id:'u4',name:'ЧЕЛОВЕК-ПАУК',emoji:'🕷️',price:300,count:39,section:'middle',chances:{uncommon:22,rare:33,epic:30,legendary:12,mythic:3}},
+  {id:'u5',name:'КАРАТЕЛЬ',emoji:'💀',price:35,count:45,section:'low',chances:{common:42,uncommon:32,rare:18,epic:6,legendary:2}},
+  {id:'u6',name:'СКОРПИОН',emoji:'🦂',price:10,count:42,section:'starter',chances:{common:52,uncommon:30,rare:13,epic:4,legendary:1}},
+  {id:'u7',name:'ДЖУНГЛИ',emoji:'🌴',price:5,count:41,section:'starter',chances:{common:60,uncommon:25,rare:11,epic:3,legendary:1}},
+  {id:'u8',name:'ЛОНЕСТАР',emoji:'🤠',price:3,count:34,section:'starter',chances:{common:65,uncommon:24,rare:9,epic:2,legendary:0.5}},
+  {id:'u9',name:'ВАЛКИРА',emoji:'⚔️',price:12,count:32,section:'starter',chances:{common:52,uncommon:30,rare:14,epic:3,legendary:1}},
+  {id:'u10',name:'МАНТИКОР',emoji:'🦂',price:28,count:31,section:'low',chances:{common:42,uncommon:32,rare:18,epic:6,legendary:2}},
+  {id:'u11',name:'КОЛЬХИДА',emoji:'🐍',price:50,count:35,section:'low',chances:{common:36,uncommon:32,rare:22,epic:8,legendary:2}},
+  {id:'u12',name:'ВАРДОГС',emoji:'🐺',price:150,count:36,section:'middle',chances:{common:25,uncommon:30,rare:28,epic:13,legendary:3,mythic:1}},
+  {id:'u13',name:'ЭЙНШТЕЙН',emoji:'🧪',price:8,count:42,section:'starter',chances:{common:58,uncommon:26,rare:11,epic:4,legendary:1}},
+  {id:'u14',name:'МЕНДЕЛЕЕВ',emoji:'⚗️',price:22,count:36,section:'low',chances:{common:48,uncommon:30,rare:16,epic:5,legendary:1}},
+  {id:'u15',name:'ДАРВИН',emoji:'🧬',price:60,count:41,section:'low',chances:{common:35,uncommon:32,rare:22,epic:9,legendary:2}},
+  {id:'u16',name:'ГАУСС',emoji:'⚡',price:300,count:39,section:'middle',chances:{uncommon:25,rare:32,epic:28,legendary:12,mythic:3}},
+  {id:'u17',name:'КОПЕРНИК',emoji:'🌌',price:800,count:37,section:'high',chances:{rare:20,epic:32,legendary:30,mythic:14,ancient:4}},
+  {id:'u18',name:'ЧЁРНЫЙ АЛМАЗ',emoji:'🖤',price:3000,count:34,section:'elite',chances:{epic:25,legendary:38,mythic:28,ancient:9}},
+  {id:'u19',name:'РОКФЕЛЛЕР',emoji:'💵',price:4500,count:32,section:'elite',chances:{epic:20,legendary:35,mythic:33,ancient:12}},
+  {id:'u20',name:'БИТКОИН',emoji:'🪙',price:8000,count:36,section:'elite',chances:{legendary:25,mythic:45,ancient:30}},
+  {id:'u21',name:'КАМУФЛЯЖНЫЙ',emoji:'🪖',price:3,count:43,section:'starter',chances:{common:65,uncommon:24,rare:9,epic:2,legendary:0.5}},
+  {id:'u22',name:'ИНЬ И ЯНЬ',emoji:'☯️',price:45,count:35,section:'low',chances:{common:38,uncommon:32,rare:21,epic:8,legendary:1}},
+  {id:'u23',name:'007',emoji:'🕴️',price:3,count:76,section:'starter',chances:{common:72,uncommon:20,rare:6,epic:1.7,legendary:0.3}},
+  {id:'u24',name:'МАГИЯ',emoji:'🔮',price:10,count:39,section:'starter',chances:{common:56,uncommon:28,rare:12,epic:3,legendary:1}},
+  {id:'u25',name:'ANGRY РЭД',emoji:'😡',price:6,count:40,section:'starter',chances:{common:60,uncommon:26,rare:10,epic:3,legendary:1}},
+  {id:'u26',name:'МЕССИ',emoji:'🐐',price:18,count:46,section:'low',chances:{common:50,uncommon:30,rare:15,epic:4,legendary:1}},
+  {id:'u27',name:'РОНАЛДУ',emoji:'👑',price:55,count:45,section:'low',chances:{common:36,uncommon:32,rare:22,epic:8,legendary:2}},
+  {id:'u28',name:'ЯМАЛЬ',emoji:'🌟',price:600,count:39,section:'high',chances:{rare:22,epic:34,legendary:30,mythic:12,ancient:2}}
 ];
 
 // ============ СОХРАНЕНИЕ ============
@@ -663,10 +662,10 @@ function openCaseDetail(c){
   else if(c.section==='gloves')cat='ПЕРЧАТКИ И НОЖИ';
   else if(c.section==='souvenir')cat='СУВЕНИРНЫЙ';
   else if(c.section==='weapon')cat='СКИНЫ ПО ОРУЖИЮ';
-  else if(c.price<50)cat='СТАРТОВЫЙ КЕЙС';
-  else if(c.price<200)cat='БЮДЖЕТНЫЙ КЕЙС';
-  else if(c.price<1000)cat='СРЕДНИЙ КЕЙС';
-  else if(c.price<5000)cat='ДОРОГОЙ КЕЙС';
+  else if(c.price<25)cat='СТАРТОВЫЙ КЕЙС';
+  else if(c.price<120)cat='БЮДЖЕТНЫЙ КЕЙС';
+  else if(c.price<600)cat='СРЕДНИЙ КЕЙС';
+  else if(c.price<3000)cat='ДОРОГОЙ КЕЙС';
   else cat='ЭЛИТНЫЙ КЕЙС';
   $('detailCat').textContent=cat;
   renderCaseOpenPanel();
